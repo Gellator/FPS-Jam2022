@@ -12,8 +12,8 @@ UEntityPhysicsModifier::UEntityPhysicsModifier()
 	PrimaryComponentTick.bCanEverTick = true;
 
 	LowGravityScale = 0.3f;
-	FrictionCoef = 2;
-	MaxAcceleration = 1000;
+	FrictionCoef = 8;
+	MaxSpeed = 2000;
 
 	MixedColor = EColorLights::CL_Nothing;
 	// ...
@@ -100,18 +100,25 @@ void UEntityPhysicsModifier::ActivateLowGravity()
 
 void UEntityPhysicsModifier::ActivateFastAsFuckBoi()
 {
-	MovementComponent->MaxAcceleration = MaxAcceleration;
+	MultiplyVelocity(MaxSpeed);
+	//MovementComponent->MaxWalkSpeed = MaxSpeed;
 }
 
 void UEntityPhysicsModifier::ActivateSlowMotion()
 {
-	MovementComponent->BrakingFriction = FrictionCoef;
+	MovementComponent->BrakingFrictionFactor = FrictionCoef;
 }
 
 void UEntityPhysicsModifier::ResetPhysics()
 {
 	MovementComponent->GravityScale = 1;
-	MovementComponent->MaxAcceleration = 600;
-	MovementComponent->BrakingFriction = 1;
+	MovementComponent->MaxWalkSpeed = 600;
+	MovementComponent->BrakingFrictionFactor = 1;
+}
+
+void UEntityPhysicsModifier::MultiplyVelocity(float ratio)
+{
+	FVector PriorVelocity = MovementComponent->Velocity;
+	MovementComponent->Velocity = PriorVelocity * 2;
 }
 

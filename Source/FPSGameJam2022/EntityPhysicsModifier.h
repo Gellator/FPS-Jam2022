@@ -36,7 +36,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
 	float LowGravityScale;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
-	float MaxAcceleration;
+	float MaxSpeed;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
 	float FrictionCoef;
 
@@ -69,5 +69,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void ResetPhysics();
-		
+	
+
+	UFUNCTION(BlueprintCallable)
+	void MultiplyVelocity(float ratio);
 };
