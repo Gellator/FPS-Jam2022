@@ -41,6 +41,12 @@ public:
 	float MinSpeed;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
 	float FrictionCoef;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
+	float AirControlReduced;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
+	float SpeedMultiplier;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
+	float SlowMultiplier;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Color ")
 	EColorLights Color1;
