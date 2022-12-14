@@ -38,6 +38,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
 	float MaxSpeed;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
+	float MinSpeed;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
 	float FrictionCoef;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Color ")

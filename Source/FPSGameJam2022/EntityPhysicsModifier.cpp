@@ -14,6 +14,7 @@ UEntityPhysicsModifier::UEntityPhysicsModifier()
 	LowGravityScale = 0.3f;
 	FrictionCoef = 8;
 	MaxSpeed = 2000;
+	MinSpeed = 300;
 
 	MixedColor = EColorLights::CL_Nothing;
 	// ...
@@ -107,6 +108,8 @@ void UEntityPhysicsModifier::ActivateFastAsFuckBoi()
 void UEntityPhysicsModifier::ActivateSlowMotion()
 {
 	MovementComponent->BrakingFrictionFactor = FrictionCoef;
+	MovementComponent->MaxWalkSpeed = MinSpeed;
+	MovementComponent->GravityScale = .05;
 }
 
 void UEntityPhysicsModifier::ResetPhysics()
