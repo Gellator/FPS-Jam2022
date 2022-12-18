@@ -104,7 +104,7 @@ void UEntityPhysicsModifier::ActivateLowGravity()
 
 void UEntityPhysicsModifier::ActivateFastAsFuckBoi()
 {
-	MultiplyVelocity(2);
+	MultiplyVelocity(SpeedMultiplier);
 	//MovementComponent->MaxWalkSpeed = MaxSpeed;
 }
 
@@ -113,7 +113,7 @@ void UEntityPhysicsModifier::ActivateSlowMotion()
 	MovementComponent->BrakingFrictionFactor = FrictionCoef;
 	MovementComponent->MaxWalkSpeed = MinSpeed;
 	MovementComponent->AirControl = 0.5;
-	MultiplyVelocity(.8);
+	MultiplyVelocity(SlowMultiplier);
 	//MovementComponent->GravityScale = .05;
 }
 
