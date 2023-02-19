@@ -112,8 +112,9 @@ void UEntityPhysicsModifier::ActivateSlowMotion()
 {
 	MovementComponent->BrakingFrictionFactor = FrictionCoef;
 	MovementComponent->MaxWalkSpeed = MinSpeed;
-	MovementComponent->AirControl = 0.5;
-	MultiplyVelocity(SlowMultiplier);
+	MovementComponent->AirControl = 0.8;
+	
+	//MultiplyVelocity(SlowMultiplier);
 	//MovementComponent->GravityScale = .05;
 }
 
