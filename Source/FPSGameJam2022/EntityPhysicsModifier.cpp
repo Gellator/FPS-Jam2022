@@ -30,6 +30,7 @@ void UEntityPhysicsModifier::BeginPlay()
 	Super::BeginPlay();
 
 	MovementComponent = GetOwner()->FindComponentByClass<UCharacterMovementComponent>();
+	ResetPhysics();
 	// ...
 	
 }
@@ -100,6 +101,8 @@ EColorLights UEntityPhysicsModifier::GetMixedColorStage()
 void UEntityPhysicsModifier::ActivateLowGravity()
 {
 	MovementComponent->GravityScale = LowGravityScale;
+	MovementComponent->AirControl = 1;
+
 }
 
 void UEntityPhysicsModifier::ActivateFastAsFuckBoi()
@@ -111,20 +114,19 @@ void UEntityPhysicsModifier::ActivateFastAsFuckBoi()
 void UEntityPhysicsModifier::ActivateSlowMotion()
 {
 	MovementComponent->BrakingFrictionFactor = FrictionCoef;
-	MovementComponent->MaxWalkSpeed = MinSpeed;
-	MovementComponent->AirControl = 0.8;
-	
+	//MovementComponent->MaxWalkSpeed = MinSpeed;
+	MovementComponent->AirControl = 1;
+	MovementComponent->GravityScale = LowGravityScale;
+	//
 	//MultiplyVelocity(SlowMultiplier);
-	//MovementComponent->GravityScale = .05;
 }
 
 void UEntityPhysicsModifier::ResetPhysics()
 {
 	MovementComponent->GravityScale = 1;
-	MovementComponent->AirControl = 1;
+	MovementComponent->AirControl = .7;
 	MovementComponent->MaxWalkSpeed = 600;
 	MovementComponent->BrakingFrictionFactor = 1;
-
 }
 
 void UEntityPhysicsModifier::MultiplyVelocity(float ratio)
