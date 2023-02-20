@@ -67,13 +67,19 @@ public:
 	EColorLights GetMixedColorStage();
 
 	UFUNCTION(BlueprintCallable)
-	void ActivateLowGravity();
+	void ActivateAntiGravity();
 
 	UFUNCTION(BlueprintCallable)
 	void ActivateFastAsFuckBoi();
 
 	UFUNCTION(BlueprintCallable)
 	void ActivateSlowMotion();
+
+	UFUNCTION(BlueprintCallable)
+	void ActivateSlowMotionAlt();
+
+	UFUNCTION(BlueprintCallable)
+	void ActivateSlowMotionNew();
 
 	UFUNCTION(BlueprintCallable)
 	void ResetPhysics();

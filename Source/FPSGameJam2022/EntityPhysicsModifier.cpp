@@ -97,7 +97,7 @@ EColorLights UEntityPhysicsModifier::GetMixedColorStage()
 	return EColorLights::CL_Nothing;
 }
 
-void UEntityPhysicsModifier::ActivateLowGravity()
+void UEntityPhysicsModifier::ActivateAntiGravity()
 {
 	MovementComponent->GravityScale = LowGravityScale;
 }
@@ -117,13 +117,32 @@ void UEntityPhysicsModifier::ActivateSlowMotion()
 	//MovementComponent->GravityScale = .05;
 }
 
+void UEntityPhysicsModifier::ActivateSlowMotionAlt()
+{
+	MovementComponent->BrakingFrictionFactor = FrictionCoef;
+	MovementComponent->MaxWalkSpeed = MinSpeed;
+	//MovementComponent->AirControl = 0.5;
+	MultiplyVelocity(SlowMultiplier);
+	//MovementComponent->GravityScale = .05;
+}
+
+//BACKUP OF ORIGINAL ActivateSlowMotion()
+
+/*void UEntityPhysicsModifier::ActivateSlowMotion()
+{
+	MovementComponent->BrakingFrictionFactor = FrictionCoef;
+	MovementComponent->MaxWalkSpeed = MinSpeed;
+	MovementComponent->AirControl = 0.5;
+	MultiplyVelocity(SlowMultiplier);
+	//MovementComponent->GravityScale = .05;
+}*/
+
 void UEntityPhysicsModifier::ResetPhysics()
 {
 	MovementComponent->GravityScale = 1;
 	MovementComponent->AirControl = 1;
 	MovementComponent->MaxWalkSpeed = 600;
 	MovementComponent->BrakingFrictionFactor = 1;
-
 }
 
 void UEntityPhysicsModifier::MultiplyVelocity(float ratio)
