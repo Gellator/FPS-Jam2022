@@ -34,6 +34,8 @@ public:
 	UCharacterMovementComponent* MovementComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
+	bool IsPlayer;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
 	float LowGravityScale;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
 	float MaxSpeed;

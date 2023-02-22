@@ -10,7 +10,7 @@ UEntityPhysicsModifier::UEntityPhysicsModifier()
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
-
+	IsPlayer = false;
 	LowGravityScale = 0.3f;
 	FrictionCoef = 8;
 	MaxSpeed = 2000;
@@ -29,7 +29,10 @@ void UEntityPhysicsModifier::BeginPlay()
 {
 	Super::BeginPlay();
 
-	MovementComponent = GetOwner()->FindComponentByClass<UCharacterMovementComponent>();
+	if (IsPlayer)
+		MovementComponent = GetOwner()->FindComponentByClass<UCharacterMovementComponent>();
+	else
+		MovementComponent = null;
 	// ...
 	
 }
