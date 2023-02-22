@@ -30,7 +30,10 @@ void UEntityPhysicsModifier::BeginPlay()
 	Super::BeginPlay();
 
 	if (IsPlayer)
+	{
 		MovementComponent = GetOwner()->FindComponentByClass<UCharacterMovementComponent>();
+		ResetPhysics();
+	}
 	else
 		MovementComponent = null;
 	// ...
@@ -113,8 +116,8 @@ void UEntityPhysicsModifier::ActivateFastAsFuckBoi()
 
 void UEntityPhysicsModifier::ActivateSlowMotion()
 {
-	//MovementComponent->BrakingFrictionFactor = FrictionCoef;
 	MovementComponent->MaxWalkSpeed = MinSpeed;
+	//MovementComponent->BrakingFrictionFactor = FrictionCoef;
 	//MovementComponent->AirControl = AirControlReduced;
 	//MultiplyVelocity(SlowMultiplier);
 	//MovementComponent->GravityScale = .05;
