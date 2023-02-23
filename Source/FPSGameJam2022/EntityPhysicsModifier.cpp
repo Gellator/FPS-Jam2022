@@ -13,6 +13,7 @@ UEntityPhysicsModifier::UEntityPhysicsModifier()
 	IsPlayer = false;
 	LowGravityScale = 0.3f;
 	FrictionCoef = 8f
+	DefaultSpeed = 600f;
 	MaxSpeed = 2000f;
 	MinSpeed = 300f;
 	AirControlReduced = 0.5f;
@@ -114,14 +115,15 @@ void UEntityPhysicsModifier::ActivateFastAsFuckBoi()
 	//MovementComponent->MaxWalkSpeed = MaxSpeed;
 }
 
-//void UEntityPhysicsModifier::ActivateSlowMotion()
-//{
-//	//MovementComponent->MaxWalkSpeed = MinSpeed;
-//	//MovementComponent->BrakingFrictionFactor = FrictionCoef;
-//	//MovementComponent->AirControl = AirControlReduced;
-//	//MultiplyVelocity(SlowMultiplier);
-//	//MovementComponent->GravityScale = .05;
-//}
+void UEntityPhysicsModifier::ActivateSlowMotion()
+{
+	//MovementComponent->MaxWalkSpeed = MinSpeed;
+	MovementComponent->MaxCustomWalkSpeed = MinSpeed;
+	//MovementComponent->BrakingFrictionFactor = FrictionCoef;
+	//MovementComponent->AirControl = AirControlReduced;
+	//MultiplyVelocity(SlowMultiplier);
+	//MovementComponent->GravityScale = .05;
+}
 
 //void UEntityPhysicsModifier::ActivateSlowMotionAlt()
 //{
@@ -147,7 +149,8 @@ void UEntityPhysicsModifier::ResetPhysics()
 {
 	MovementComponent->GravityScale = 1;
 	MovementComponent->AirControl = 0.05;
-	MovementComponent->MaxWalkSpeed = MaxSpeed;
+	//MovementComponent->MaxWalkSpeed = MaxSpeed;
+	MovementComponent->MaxCustomWalkSpeed = DefaultSpeed;
 	MovementComponent->BrakingFrictionFactor = 1;
 }
 

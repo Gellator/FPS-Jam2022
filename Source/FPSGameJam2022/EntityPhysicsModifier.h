@@ -38,6 +38,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
 	float LowGravityScale;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
+	float DefaultSpeed;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
 	float MaxSpeed;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
 	float MinSpeed;
