@@ -77,11 +77,11 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void ActivateSlowMotion();
 
-	UFUNCTION(BlueprintCallable)
-	void ActivateSlowMotionAlt();
+	//UFUNCTION(BlueprintCallable)
+	//void ActivateSlowMotionAlt();
 
-	UFUNCTION(BlueprintCallable)
-	void ActivateSlowMotionNew();
+	//UFUNCTION(BlueprintCallable)
+	//void ActivateSlowMotionNew();
 
 	UFUNCTION(BlueprintCallable)
 	void ResetPhysics();
