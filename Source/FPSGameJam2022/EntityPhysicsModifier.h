@@ -48,6 +48,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
 	float AirControlReduced;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
+	float MassDefault;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
+	float MassSlowDown;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
 	float SpeedMultiplier;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = " Modifiers ")
 	float SlowMultiplier;
@@ -78,6 +82,16 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void ActivateSlowMotion();
+	
+	UFUNCTION(BlueprintCallable)
+	void ObjActivateAntiGravity();
+
+
+	UFUNCTION(BlueprintCallable)
+	void ObjActivateFastAsFuckBoi();
+
+	UFUNCTION(BlueprintCallable)
+	void ObjActivateSlowMotion();
 
 	//UFUNCTION(BlueprintCallable)
 	//void ActivateSlowMotionAlt();

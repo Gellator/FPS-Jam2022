@@ -3,6 +3,7 @@
 
 #include "EntityPhysicsModifier.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "../../../../Unreal Engine/UE_5.0/Engine/Plugins/Animation/ControlRigSpline/Source/ControlRigSpline/ThirdParty/TinySpline/parson.cpp"
 
 // Sets default values for this component's properties
 UEntityPhysicsModifier::UEntityPhysicsModifier()
@@ -13,11 +14,13 @@ UEntityPhysicsModifier::UEntityPhysicsModifier()
 	
 	IsPlayer = false;
 	LowGravityScale = 0.3f;
-	DefaultSpeed = 600f;
-	MaxSpeed = 2000f;
-	MinSpeed = 300f;
-	FrictionCoef = 8f;
+	DefaultSpeed = 600.0f;
+	MaxSpeed = 2000.0f;
+	MinSpeed = 300.0f;
+	FrictionCoef = 8.0f;
 	AirControlReduced = 0.5f;
+	MassDefault = 100.0;
+	MassSlowDown = 50.0;
 	SpeedMultiplier = 1.1f;
 	SlowMultiplier = 0.8f;
 
@@ -37,7 +40,7 @@ void UEntityPhysicsModifier::BeginPlay()
 		ResetPhysics();
 	}
 	else
-		MovementComponent = null;
+		MovementComponent = nullptr;
 	// ...
 	
 }
@@ -119,7 +122,34 @@ void UEntityPhysicsModifier::ActivateFastAsFuckBoi()
 void UEntityPhysicsModifier::ActivateSlowMotion()
 {
 	//MovementComponent->MaxWalkSpeed = MinSpeed;
-	MovementComponent->MaxCustomWalkSpeed = MinSpeed;
+	MovementComponent->MaxCustomMovementSpeed = MinSpeed;
+	MovementComponent->Mass = MassSlowDown;
+	//MovementComponent->BrakingFrictionFactor = FrictionCoef;
+	//MovementComponent->AirControl = AirControlReduced;
+	//MultiplyVelocity(SlowMultiplier);
+	//MovementComponent->GravityScale = .05;
+}
+
+void UEntityPhysicsModifier::ObjActivateAntiGravity()
+{
+
+}
+
+void UEntityPhysicsModifier::ObjActivateFastAsFuckBoi()
+{
+
+}
+
+void UEntityPhysicsModifier::ObjActivateSlowMotion()
+{
+	
+}
+
+void UEntityPhysicsModifier::ActivateSlowMotion()
+{
+	//MovementComponent->MaxWalkSpeed = MinSpeed;
+	MovementComponent->MaxCustomMovementSpeed = MinSpeed;
+	MovementComponent->Mass = MassSlowDown;
 	//MovementComponent->BrakingFrictionFactor = FrictionCoef;
 	//MovementComponent->AirControl = AirControlReduced;
 	//MultiplyVelocity(SlowMultiplier);
@@ -151,7 +181,8 @@ void UEntityPhysicsModifier::ResetPhysics()
 	MovementComponent->GravityScale = 1;
 	MovementComponent->AirControl = 0.05;
 	//MovementComponent->MaxWalkSpeed = MaxSpeed;
-	MovementComponent->MaxCustomWalkSpeed = DefaultSpeed;
+	MovementComponent->MaxCustomMovementSpeed = DefaultSpeed;
+	MovementComponent->Mass = MassDefault;
 	MovementComponent->BrakingFrictionFactor = 1;
 }
 
